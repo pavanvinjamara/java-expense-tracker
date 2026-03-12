@@ -14,9 +14,7 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
 *.iws
-*.iml
 *.ipr
 
 ### NetBeans ###
@@ -31,3 +29,24 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+# React
+frontend/node_modules
+frontend/build
+frontend/.env
+
+# Spring Boot
+backend/target
+backend/*.log
+backend/*.class
+backend/*.jar
+backend/*.war
+
+# IDE
+
+.vscode
+
+# OS
+.DS_Store
+Thumbs.db
