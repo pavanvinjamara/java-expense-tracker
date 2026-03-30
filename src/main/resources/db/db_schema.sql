@@ -162,3 +162,40 @@ CREATE TABLE reviews (
         -- add updated_at
 
 )
+
+
+
+
+db reviews2:
+use as minimal datatype sizes everytime. Ex:refer- https://www.postgresql.org/docs/current/datatype-numeric.html#DATATYPE-INT
+make non nullable, set default values wherever possible
+add table:banners
+use enums wherever values can be restricted
+while data is entered into db, we should have as many restrictions as possible, so wrong data wont be stored in db.
+
+users:
+first_name, last_name, is_active, is_email_verified, is_deleted, created_at, updated_at-make non nullable
+set default values for some of above columns
+
+addresses:
+
+cart_items:
+
+categories:
+delete parent_id col
+
+order_items:
+
+orders:
+status, payment_status can be enum types in db
+
+payments:
+method, status can be enum types in db
+
+product_images:
+add ordering col
+
+products:
+
+reviews:
+
