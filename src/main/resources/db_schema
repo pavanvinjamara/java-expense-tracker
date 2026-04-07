@@ -107,7 +107,7 @@ CREATE TABLE orders(
 	address_id INT,
 
 	status VARCHAR(20),
-	payment_status VARCHAR(50),
+	payment_status order_status,
 	total_amount NUMERIC(10,2),
 
 	created_at TIMESTAMP DEFAULT now(),
@@ -134,12 +134,20 @@ CREATE TABLE payments(
 
 	 order_id INT,
 	 method VARCHAR(50),
-	 status VARCHAR(50),
+	 status order_status,
 	 transaction_id VARCHAR(255),
 
 	 created_at TIMESTAMP DEFAULT now()
 );
 
+-- ENUM status
+CREATE TYPE order_status AS ENUM(
+'PENDING',
+'CONFIRMED',
+'SHIPPED',
+'DELIVERED',
+'CANCELLED'
+);
 -- REVIEWS
 CREATE TABLE reviews (
 	id SERIAL PRIMARY KEY,
