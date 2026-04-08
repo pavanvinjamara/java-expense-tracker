@@ -32,7 +32,7 @@ response = {
 		],
 	},
 
-	banner_slider: {
+	banners: {
 		title: "",
 		data: [
 			{
@@ -47,8 +47,11 @@ response = {
 	},
 
 	customer_favourite:{
+	new_arrivals: {},
+	best_sellers: {},
 		//TODO:"New Arrivals" is also present in "customer_favourite" section. This should have "New Arrivals" also in response
             title: "",
+
             data: [{
 				image_url: "",
 				offer_price: 12.34 ,  --FLOAT
@@ -56,6 +59,7 @@ response = {
 				id: 1,
 				seo_url:,
 				rating: ,
+				is_bestseller:
 			},{...}
 		],
 	},
@@ -108,7 +112,9 @@ response = {
 				//TODO:rating field is missing in this & in all other sections' product objects as well.
 				title:"", //is missing
 				image_url: "",
-                price: 12.34   --FLOAT
+                actual_price: 12.34,   --FLOAT,
+                offer_price: 12.34,
+                rating: "",
                 id: 1,
                 seo_url:
 			},{ ... }
@@ -154,6 +160,7 @@ response = {
 				id:1,
 				user_name:"",
 				review:"",
+				product_id: "",
 			}
 		]
 	},
@@ -176,7 +183,7 @@ response = {
 
 https://vaaradhifarms.com/collections/honey/products/natural-honey?variant=45050134200607
 https://vaaradhifarms.com/products/wild-honey
-GET request product?id=xxxxxxxx query param
+GET request product?seo_url=xxxxxxxx query param
 
 response = {
 	product_details :{
@@ -263,7 +270,7 @@ Post request
 
 filter applied
 {
-	serach:"",
+	search:"",
 	sort_by: "",
 	filter:{},
 }
@@ -288,7 +295,9 @@ response:{
 --------------- cart add/remove/ delete
 add post method
 param ={
-	id: "",
+	product_id: "",
+	quantity: "",
+	user_id: "",
 }
 response={
     msg: "",
@@ -296,7 +305,8 @@ response={
 
 delete method
 param = {
-	id: ''
+	product_id: '',
+	user_id:'',
 }
 
 response = {
@@ -340,10 +350,8 @@ response= {
 	msg: "",
 }
 ------------------------order purchase/cancel
- address post
-param = {
-	user_id : ""
-}
+ address GET
+query	user_id=""
 response= {
 	data: [{
 	line1: "",
@@ -353,16 +361,17 @@ response= {
 	pin code: "",
 	}, {...}]
 }
+
 post method
 param = {
 	products:['product
 	_id'],
 	user_id: "",
 	payment_method: "",
-	address: "",
+	address_id: '' ,
 	card_details: {
 		upi_id: "",
-		phonenumber: "",
+		phone_number: "",
 		||
 		card_no: "",
 		doe: "",

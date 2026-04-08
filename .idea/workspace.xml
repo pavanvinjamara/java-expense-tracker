@@ -7,7 +7,6 @@
     <list default="true" id="94cf521f-2fce-426b-9861-587280f9534e" name="Changes" comment="Merge branch">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/api-design" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/api-design" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db_schema" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db_schema" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +39,7 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="3AquK5b5NXx7GV7UuCtGMH0nmK8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
