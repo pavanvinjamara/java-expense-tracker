@@ -16,7 +16,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate:
-      ddl-auto: update   # change to 'none' if tables already exist
+      ddl-auto: none   # change to 'none' if tables already exist
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
