@@ -34,8 +34,6 @@ public class User {
     private LocalDate dob;
     private String gender;
 
-
-
     private Boolean isActive = true;
     private Boolean isEmailVerified = false;
 

@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.dto.LoginRequest;
 import com.example.backend.dto.SignupRequest;
 import com.example.backend.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/auth")
 public class AuthController {
 
     @Autowired
@@ -23,6 +24,16 @@ public class AuthController {
         }
         catch (RuntimeException e){
             return e.getMessage();
+        }
+    }
+
+    @PostMapping("login")
+    public String login(@RequestBody LoginRequest request){
+        try{
+            authService.login(request);
+            return "Login Successfully";
+        } catch (RuntimeException e) {
+                return e.getMessage();
         }
     }
 }

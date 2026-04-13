@@ -1,5 +1,7 @@
 package com.example.backend.service.impl;
 
+import com.example.backend.dto.LoginRequest;
+import com.example.backend.dto.LoginResponse;
 import com.example.backend.dto.SignupRequest;
 import com.example.backend.entity.User;
 import com.example.backend.repository.UserRepository;
@@ -27,12 +29,29 @@ public class AuthServiceImp implements AuthService {
         }
 
         User user = new User();
-        user.setName(request.getName());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         userRepository.save(user);
 
+    }
+
+    @Override
+    public LoginResponse login(LoginRequest request) {
+        User user = userRepository.findByEmail(request.getEmail());
+        if(user == null){
+            throw new RuntimeException("User not found");
+        }
+
+        if(!user.getPassword().equals(request.getPassword())){
+            throw new RuntimeException("Invalid password");
+        }
+
+        return new LoginResponse(
+                user.getId(),
+                user.getEmail(),
+                user.getFirstName()
+        );
     }
 }
 
