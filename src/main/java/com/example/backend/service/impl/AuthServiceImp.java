@@ -5,6 +5,7 @@ import com.example.backend.dto.LoginResponse;
 import com.example.backend.dto.SignupRequest;
 import com.example.backend.entity.User;
 import com.example.backend.repository.UserRepository;
+import com.example.backend.security.JwtUtil;
 import com.example.backend.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,6 +20,9 @@ public class AuthServiceImp implements AuthService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+    @Autowired
+    private JwtUtil jwtUtil;
+
     @Override
     public void signup(SignupRequest request) {
 
@@ -30,6 +34,7 @@ public class AuthServiceImp implements AuthService {
 
         User user = new User();
         user.setEmail(request.getEmail());
+//        password hashing here
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         userRepository.save(user);
@@ -43,14 +48,19 @@ public class AuthServiceImp implements AuthService {
             throw new RuntimeException("User not found");
         }
 
-        if(!user.getPassword().equals(request.getPassword())){
+        if(!passwordEncoder.matches(request.getPassword(), user.getPassword())){
             throw new RuntimeException("Invalid password");
         }
+
+//        if(!user.getPassword().equals(request.getPassword())){
+//            throw new RuntimeException("Invalid password");
+//        }
+        String token = jwtUtil.generateToken(user.getEmail());
 
         return new LoginResponse(
                 user.getId(),
                 user.getEmail(),
-                user.getFirstName()
+                token
         );
     }
 }
