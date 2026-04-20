@@ -13,7 +13,8 @@ public class RefreshToken {
 
     private Integer userId;
 
-    private Text token;
+    @Column(columnDefinition = "Text")
+    private String token;
 
     private LocalDateTime createdAt = LocalDateTime.now();
 
@@ -35,11 +36,11 @@ public class RefreshToken {
         this.userId = userId;
     }
 
-    public Text getToken() {
+    public String getToken() {
         return token;
     }
 
-    public void setToken(Text token) {
+    public void setToken(String token) {
         this.token = token;
     }
 
